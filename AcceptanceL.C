@@ -11,7 +11,7 @@ void AcceptanceL(int run, double th0, double adc_up, double adc_in, double adc_o
 
 
    TChain *T = new TChain("T");
-   T->Add(Form("/lustre19/expphy/volatile/halla/parity/crex_optics_rootfiles/prexLHRS_%d_-1.root",run));
+   T->Add(Form("/lustre19/expphy/volatile/halla/parity/crex_optics_rootfiles/prexLHRS_%d_-1*.root",run));
 
    double d2r = TMath::Pi()/180; 
    double r2d = 1/d2r;
