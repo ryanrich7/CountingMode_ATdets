@@ -4,7 +4,7 @@
 
 //adc_up - main detector
 //adc_in - A_T in, adc_out - A_T out
-//Ebeam in GeV
+//Ebeam in GeV - Run dependent...
 void AcceptanceL(int run, double th0, double adc_up, double adc_in, double adc_out, double Ebeam){ 
 
    gStyle->SetOptStat(1002211);
@@ -29,7 +29,7 @@ void AcceptanceL(int run, double th0, double adc_up, double adc_in, double adc_o
    TH1F *ThTg[3],*PhTg[3];
    TH1F *Qsq[3];
 
-   TCanvas *c_q[3], *c_ph[3], *c_cos[3], *c_sin[3], *c_thtg[3], *c_phtg[3];
+   TCanvas *c_q, *c_ph, *c_cos, *c_sin, *c_thtg, *c_phtg;
 
 
    int color[3] = {2,3,4};
@@ -37,7 +37,7 @@ void AcceptanceL(int run, double th0, double adc_up, double adc_in, double adc_o
 
    for(int i = 0; i < 3; i++){ 
  
-      Qsq[i] = new TH1F(Form("Qsq[%i]",i),Form("LHRS Q^{2} for %s Detector, Run %d",det[i],run),150,0,0.035);
+      Qsq[i] = new TH1F(Form("Qsq[%i]",i),Form("LHRS Q^{2} for %s Detector, Run %d",det[i],run),150,0,0.07);
       //Relative to horizontal 
       Phi[i] = new TH1F(Form("Phi[%i]",i),Form("LHRS #Phi_{H} for %s Detector, Run %d",det[i],run),150,-50,50);
      //Relative to vertical
@@ -146,35 +146,63 @@ void AcceptanceL(int run, double th0, double adc_up, double adc_in, double adc_o
 
 
 
-  for(int i = 0; i < 3; i++){
-   c_q[i] = new TCanvas(Form("c_q[%i]",i),Form("c_q[%i]",i));
+
+   c_q = new TCanvas();
+   c_q->Divide(2,2);
+   for(int i = 0; i < 3; i++){
+   c_q->cd(i+1);
    Qsq[i]->Draw("HIST");
-   c_q[i]->SaveAs(Form("qsqLHRS_%s_Run%d.pdf",det[i],run));
+   }
+   c_q->SaveAs(Form("qsqLHRS_Run%d.pdf",run));
 
 
-   c_cos[i] = new TCanvas(Form("c_cos[%i]",i),Form("c_cos[%i]",i));
+   c_cos = new TCanvas();
+   c_cos->Divide(2,2);
+   for(int i = 0; i < 3; i++){
+   c_cos->cd(i+1);
    Cos[i]->Draw("HIST");
-   c_cos[i]->SaveAs(Form("cosLHRS_%s_Run%d.pdf",det[i],run));
+   }
+   c_cos->SaveAs(Form("cosLHRS_Run%d.pdf",run));
   
-   c_sin[i] = new TCanvas(Form("c_sin[%i]",i),Form("c_sin[%i]",i));
+   c_sin = new TCanvas();
+   c_sin->Divide(2,2);
+   for(int i = 0; i < 3; i++){ 
+   c_sin->cd(i+1);
    Sin[i]->Draw("HIST");
-   c_sin[i]->SaveAs(Form("sinLHRS_%s_Run%d.pdf",det[i],run));
+   }
+   c_sin->SaveAs(Form("sinLHRS_Run%d.pdf",run));
 
-   c_ph[i] = new TCanvas(Form("c_ph[%i]",i),Form("c_ph[%i]",i));
+   c_ph = new TCanvas();
+   c_ph->Divide(2,2); 
+   for(int i = 0; i < 3; i++){
+   c_ph->cd(i+1);
    Phi[i]->Draw("HIST");
-   c_ph[i]->SaveAs(Form("phiLHRS_%s_Run%d.pdf",det[i],run));
+   }
+   c_ph->SaveAs(Form("phiLHRS_Run%d.pdf",run));
 
-   c_thtg[i] = new TCanvas(Form("c_thtg[%i]",i),Form("c_thtg[%i]",i));
+   c_thtg = new TCanvas();
+   c_thtg->Divide(2,2);
+   for(int i = 0; i < 3; i++){
+   c_thtg->cd(i+1);
    ThTg[i]->Draw("HIST");
-   c_thtg[i]->SaveAs(Form("thtgLHRS_%s_Run%d.pdf",det[i],run));
+   }
+   c_thtg->SaveAs(Form("thtgLHRS_Run%d.pdf",run));
 
-   c_phtg[i] = new TCanvas(Form("c_phtg[%i]",i),Form("c_phtg[%i]",i));
+   c_phtg = new TCanvas();
+   c_phtg->Divide(2,2);
+   for(int i = 0; i < 3; i++){
+   c_phtg->cd(i+1);
    PhTg[i]->Draw("HIST");
-   c_phtg[i]->SaveAs(Form("phtgLHRS_%s_Run%d.pdf",det[i],run));
+   }
+   c_phtg->SaveAs(Form("phtgLHRS_Run%d.pdf",run));
 
-   } 
 
 
+
+    
+
+
+    
 
 
 
