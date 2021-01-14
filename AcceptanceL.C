@@ -42,7 +42,7 @@ void AcceptanceL(int run, double th0, double adc_up, double adc_in, double adc_o
       Phi[i] = new TH1F(Form("Phi[%i]",i),Form("LHRS #Phi_{H} for %s Detector, Run %d",det[i],run),150,-50,50);
      //Relative to vertical
      Cos[i] = new TH1F(Form("Cos[%i]",i),Form("LHRS Cos(#Phi_{V}) for %s Detector, Run %d",det[i],run),150,-0.8,0.8);
-     Sin[i] = new TH1F(Form("Sin[%i]",i),Form("LHRS Sin(#Ph_{V}) for %s Detector, Run %d",det[i],run),150,0.6,1.05);
+     Sin[i] = new TH1F(Form("Sin[%i]",i),Form("LHRS Sin(#Phi_{V}) for %s Detector, Run %d",det[i],run),150,0.6,1.05);
      //Thtg and Phtg
      ThTg[i] = new TH1F(Form("ThTg[%i]",i),Form("LHRS #theta_{tg} for %s Detector, Run %d",det[i],run),150,-0.06,0.06);
      PhTg[i] = new TH1F(Form("PhTg[%i]",i),Form("LHRS #phi_{tg} for %s Detector, Run %d",det[i],run),150,-0.03,0.03);
