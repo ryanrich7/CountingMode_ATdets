@@ -50,6 +50,14 @@ void AcceptanceL(int run, double th0, double adc_up, double adc_in, double adc_o
      Qsq[i]->SetLineColor(color[i]); Phi[i]->SetLineColor(color[i]); Cos[i]->SetLineColor(color[i]);
      Sin[i]->SetLineColor(color[i]); ThTg[i]->SetLineColor(color[i]); PhTg[i]->SetLineColor(color[i]);
 
+     Qsq[i]->GetXaxis()->SetTitle("Q^{2} (GeV/c)^{2}");
+     Sin[i]->GetXaxis()->SetTitle("Sin(#Phi_{V})");
+     Cos[i]->GetXaxis()->SetTitle("Cos(#Phi_{V})");
+     Phi[i]->GetXaxis()->SetTitle("#Phi_{H} (deg)");
+     ThTg[i]->GetXaxis()->SetTitle("#theta_{tg} (rad)");
+     PhTg[i]->GetXaxis()->SetTitle("phi_{tg} (rad)");
+
+
     }
 
     //Relevant data from root tree
