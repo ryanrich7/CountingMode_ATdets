@@ -102,8 +102,8 @@ void AcceptanceL(int run, double th0, double adc_up, double adc_in, double adc_o
       //Qsq
       thisCosAngdat = (cth0 - thisPhdat*sth0)/(TMath::Sqrt(1+thisThdat*thisThdat+thisPhdat*thisPhdat));
       thisQsqdat = 2*thisPdat*Ebeam*(1-thisCosAngdat);  
-      //CosPhi relative to vertical
-      thisCosPhi = thisThdat/(TMath::Sqrt(thisThdat*thisThdat+sth0*sth0+2*tanth0*thisPhdat + thisPhdat*thisPhdat*secth0*secth0));     
+      //CosPhi relative to vertical 
+      thisCosPhi = -thisThdat/(TMath::Sqrt(thisThdat*thisThdat+sth0*sth0 - 2*tanth0*thisPhdat + thisPhdat*thisPhdat*secth0*secth0));     
       thisSinPhi = TMath::Sqrt(1-thisCosPhi*thisCosPhi);     
       //Phi relative in horizontal -- Add 180 for RHRS
       thisPhi = 270 - r2d*TMath::ACos(thisCosPhi);
